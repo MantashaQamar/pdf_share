@@ -1,0 +1,14 @@
+{
+  "name": "pdf-sharing-app",
+  "version": "1.0.0",
+  "description": "A simple PDF sharing application",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.3",
+    "sqlite3": "^5.0.0"
+  }
+}

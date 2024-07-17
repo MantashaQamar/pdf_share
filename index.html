@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDF Sharing App</title>
+</head>
+<body>
+  <h1>Upload PDF</h1>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="pdf" accept="application/pdf" required />
+    <button type="submit">Upload</button>
+  </form>
+
+  <h1>Shared PDFs</h1>
+  <ul id="file-list"></ul>
+
+  <script>
+    async function fetchFiles() {
+      const response = await fetch('/files');
+      const files = await response.json();
+      const fileList = document.getElementById('file-list');
+      fileList.innerHTML = '';
+      files.forEach(file => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a href="${file.path}" target="_blank">${file.filename}</a>`;
+        fileList.appendChild(li);
+      });
+    }
+
+    // Fetch the list of files on page load
+    window.onload = fetchFiles;
+  </script>
+</body>
+</html>
